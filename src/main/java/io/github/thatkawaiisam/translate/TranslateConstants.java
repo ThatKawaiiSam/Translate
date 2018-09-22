@@ -4,10 +4,11 @@ import org.bukkit.configuration.Configuration;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
-class TranslateConstants {
+public class TranslateConstants {
 
-    static List<String>
+    public static List<String>
             helpCommand = new ArrayList<>(),
             reloadCommand = new ArrayList<>(),
             translateCommand = new ArrayList<>();
@@ -15,10 +16,13 @@ class TranslateConstants {
     /**
      * Load Translate Values from configuration file
      */
-    static void loadFromConfig() {
+    public static void loadFromConfig() {
         Configuration configuration = TranslatePlugin.getConfigFile().getConfiguration();
-        helpCommand = configuration.getStringList("Help-Command");
-        reloadCommand = configuration.getStringList("Reload-Command");
-        translateCommand = configuration.getStringList("Translate-Command");
+        helpCommand.clear();
+        helpCommand.addAll(configuration.getStringList("Help-Command"));
+        reloadCommand.clear();
+        reloadCommand.addAll(configuration.getStringList("Reload-Command"));
+        translateCommand.clear();
+        translateCommand.addAll(configuration.getStringList("Translate-Command"));
     }
 }

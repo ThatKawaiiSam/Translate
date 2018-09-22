@@ -46,13 +46,11 @@ public class TranslateCommand {
 
     @Command(
             names = {
-                    "translate config",
-                    "trasnlate config reload",
+                    "translate config reload",
                     "translate reload"
-            },
-            async = true
+            }
     )
-    public static void translateConfigReloadCommand(CommandSender commandSender) {
+    public static void translateReloadCommand(CommandSender commandSender) {
         TranslateConstants.loadFromConfig();
         for (String message : TranslateConstants.reloadCommand) {
             commandSender.sendMessage(MessageUtility.formatMessage(message));

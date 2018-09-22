@@ -20,6 +20,7 @@ public class TranslatePlugin extends JavaPlugin {
         CommandHandler.loadCommandsFromPackage(this,"io.github.thatkawaiisam.translate");
 
         /* Load Values */
+        new TranslateConstants();
         TranslateConstants.loadFromConfig();
     }
 
