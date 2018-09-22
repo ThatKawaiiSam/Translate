@@ -2,6 +2,8 @@ package io.github.thatkawaiisam.translate;
 
 import io.github.thatkawaiisam.kawaiilibs.command.Command;
 import io.github.thatkawaiisam.kawaiilibs.command.param.Parameter;
+
+import io.github.thatkawaiisam.kawaiilibs.utils.MessageUtility;
 import org.bukkit.command.CommandSender;
 
 public class TranslateCommand {
@@ -16,7 +18,14 @@ public class TranslateCommand {
             @Parameter(name = "language to") String to,
             @Parameter(name = "content", wildcard = true) String content){
         try {
-            commandSender.sendMessage(TranslateUtils.translateText(from, to, content));
+            for (String message : TranslateConstants.translateCommand) {
+                String finalMessage = message
+                        .replaceAll("%to-language%", to)
+                        .replaceAll("%from-language%", from)
+                        .replaceAll("%original-content%", content)
+                        .replaceAll("%translated-content%", TranslateUtils.translateText(from, to, content));
+                commandSender.sendMessage(MessageUtility.formatMessage(finalMessage));
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -25,14 +34,29 @@ public class TranslateCommand {
     @Command(
             names = {
                     "translate help",
-                    "translate ?"
+                    "translate ?",
             },
             async = true
     )
     public static void translateHelpCommand(CommandSender commandSender) {
-        commandSender.sendMessage("Translate Comamnd");
-        commandSender.sendMessage(" Usage: /translate <language from> <language to> <content>");
-        commandSender.sendMessage(" You can use AUTO in language from for Google to attempt to find the language of the content.");
+        for (String message : TranslateConstants.helpCommand) {
+            commandSender.sendMessage(MessageUtility.formatMessage(message));
+        }
+    }
+
+    @Command(
+            names = {
+                    "translate config",
+                    "trasnlate config reload",
+                    "translate reload"
+            },
+            async = true
+    )
+    public static void translateConfigReloadCommand(CommandSender commandSender) {
+        TranslateConstants.loadFromConfig();
+        for (String message : TranslateConstants.reloadCommand) {
+            commandSender.sendMessage(MessageUtility.formatMessage(message));
+        }
     }
 
 }

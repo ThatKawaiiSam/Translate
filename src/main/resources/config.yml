@@ -1,0 +1,14 @@
+#Help Command
+Help-Command:
+  - "Translate Comamnd"
+  - " Usage: /translate <language from> <language to> <content>"
+  - " You can use AUTO in language from for Google to attempt to find the language of the content."
+
+#Reload Command
+Reload-Command:
+  - "Translate Configuration File has been reloaded!"
+
+#Translate Command
+Translate-Command:
+  - "FROM: %from-language% - %original content%"
+  - "TO: %to-language% - %translated-content%"

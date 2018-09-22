@@ -11,14 +11,19 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 
-public class TranslateUtils {
+class TranslateUtils {
 
-    public static String translateText(String langFrom, String langTo, String content) throws Exception {
-        String url = "https://translate.googleapis.com/translate_a/single?" + "client=gtx&" + "sl=" + langFrom + "&tl="
-                + langTo + "&dt=t&q=" + URLEncoder.encode(content, "UTF-8");
+    /* URL Attributes */
+    private static final String USER_AGENT = "Mozilla/5.0";
+    private static final String URL_ENCODER = "UTF-8";
+
+    static String translateText(String langFrom, String langTo, String content) throws Exception {
+        String url = "https://translate.googleapis.com/translate_a/single?client=gtx&sl="
+                + langFrom + "&tl="
+                + langTo + "&dt=t&q=" + URLEncoder.encode(content, URL_ENCODER);
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-        con.setRequestProperty("User-Agent", "Mozilla/5.0");
+        con.setRequestProperty("User-Agent", USER_AGENT);
 
         BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
         String inputLine;
