@@ -10,5 +10,5 @@ Reload-Command:
 
 #Translate Command
 Translate-Command:
-  - "FROM: %from-language% - %original content%"
-  - "TO: %to-language% - %translated-content%"
+  - "&cFROM: %from-language% - %original-content%"
+  - "&aTO: %to-language% - %translated-content%"
