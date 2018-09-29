@@ -1,7 +1,7 @@
 package io.github.thatkawaiisam.translate;
 
-import io.github.thatkawaiisam.kawaiilibs.command.CommandHandler;
-import io.github.thatkawaiisam.kawaiilibs.config.BukkitConfigHelper;
+import io.github.thatkawaiisam.commands.CommandHandler;
+import io.github.thatkawaiisam.configs.BukkitConfigHelper;
 import lombok.Getter;
 import org.bukkit.plugin.java.JavaPlugin;
 

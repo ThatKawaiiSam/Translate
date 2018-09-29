@@ -1,7 +1,5 @@
 package io.github.thatkawaiisam.translate;
 
-import com.google.gson.JsonArray;
-import org.bukkit.Bukkit;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 

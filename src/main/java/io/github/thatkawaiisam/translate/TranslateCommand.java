@@ -1,9 +1,8 @@
 package io.github.thatkawaiisam.translate;
 
-import io.github.thatkawaiisam.kawaiilibs.command.Command;
-import io.github.thatkawaiisam.kawaiilibs.command.param.Parameter;
-
-import io.github.thatkawaiisam.kawaiilibs.utils.MessageUtility;
+import io.github.thatkawaiisam.commands.Command;
+import io.github.thatkawaiisam.commands.param.Parameter;
+import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
 public class TranslateCommand {
@@ -24,7 +23,7 @@ public class TranslateCommand {
                         .replaceAll("%from-language%", from)
                         .replaceAll("%original-content%", content)
                         .replaceAll("%translated-content%", TranslateUtils.translateText(from, to, content));
-                commandSender.sendMessage(MessageUtility.formatMessage(finalMessage));
+                commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', finalMessage));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -40,7 +39,7 @@ public class TranslateCommand {
     )
     public static void translateHelpCommand(CommandSender commandSender) {
         for (String message : TranslateConstants.helpCommand) {
-            commandSender.sendMessage(MessageUtility.formatMessage(message));
+            commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', message));
         }
     }
 
@@ -53,7 +52,7 @@ public class TranslateCommand {
     public static void translateReloadCommand(CommandSender commandSender) {
         TranslateConstants.loadFromConfig();
         for (String message : TranslateConstants.reloadCommand) {
-            commandSender.sendMessage(MessageUtility.formatMessage(message));
+            commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', message));
         }
     }
 
